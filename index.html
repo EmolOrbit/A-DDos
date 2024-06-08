@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDoS Attack Tool</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>DDoS Attack Tool</h1>
+        <form id="attackForm">
+            <label for="urlInput">Enter URL to attack:</label>
+            <input type="text" id="urlInput" placeholder="https://example.com" required />
+            <button type="submit">Start Attack</button>
+        </form>
+    </div>
+
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        document.getElementById('attackForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const url = document.getElementById('urlInput').value;
+            ipcRenderer.send('start-attack', url);
+        });
+    </script>
+</body>
+</html>
