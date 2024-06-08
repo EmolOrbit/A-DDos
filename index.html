@@ -16,14 +16,9 @@
         </form>
     </div>
 
-    <script>
-        const { ipcRenderer } = require('electron');
+    <script src="renderer.js"></script>
+</body>
+</html>
 
-        document.getElementById('attackForm').addEventListener('submit', (event) => {
-            event.preventDefault();
-            const url = document.getElementById('urlInput').value;
-            ipcRenderer.send('start-attack', url);
-        });
-    </script>
 </body>
 </html>
